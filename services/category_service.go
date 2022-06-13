@@ -2,6 +2,7 @@ package services
 
 import (
 	categoryCliente "mvc-go/clients/category"
+	productCliente "mvc-go/clients/product"
 	"mvc-go/dto"
 	"mvc-go/model"
 	e "mvc-go/utils/errors"
@@ -30,6 +31,8 @@ func (s *categoryService) GetCategories() (dto.CategoriesDto, e.ApiError) {
 		var categoryDto dto.CategoryDto
 		categoryDto.Id_category = category.Id
 		categoryDto.Name = category.Name
+		categoryDto.Icon = category.Icon
+		categoryDto.Cantidad = productCliente.GetCantidadProducts(category.Id)
 
 		categoriesDto = append(categoriesDto, categoryDto)
 	}

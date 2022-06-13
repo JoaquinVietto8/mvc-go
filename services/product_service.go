@@ -54,6 +54,7 @@ func (s *productService) GetProducts() (dto.ProductsDto, e.ApiError) {
 		productDto.Price = product.Price
 		productDto.Picture = product.Picture
 		productDto.Id_category = product.Id_category
+		productDto.Stock = product.Stock
 
 		productsDto = append(productsDto, productDto)
 	}

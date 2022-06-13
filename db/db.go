@@ -20,7 +20,7 @@ var (
 
 func init() {
 	// DB Connections Paramters
-	DBName := "tayi"
+	DBName := "mvc"
 	DBUser := "root"
 	DBPass := ""
 	//DBPass := os.Getenv("MVC_DB_PASS")

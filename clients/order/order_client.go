@@ -11,25 +11,16 @@ var Db *gorm.DB
 
 func GetOrdersByUserId(id int) model.Orders {
 	var orders model.Orders
-	Db.Where("id = ?", id).Find(&orders)
-	log.Debug("Orders: ", orders)
+	log.Debug("Id: ", id)
+	Db.Where("id_user = ?", id).Find(&orders)
+	log.Debug("Order: ", orders)
 
 	return orders
-}
-
-func GetLastOrderId() int {
-	var order model.Order
-
-	Db.Last(&order)
-	log.Debug("Id Order: ", order.Id)
-
-	return order.Id + 1
 }
 
 func GetOrders() model.Orders {
 	var orders model.Orders
 	Db.Find(&orders)
-
 	log.Debug("Orders: ", orders)
 
 	return orders
@@ -47,7 +38,7 @@ func InsertOrder(order model.Order) model.Order {
 	return order
 }
 
-func UpdateTotal(total float32, id int) float32 {
+func UpdateTotal(total float32, id int) {
 
 	result := Db.Model(&model.Order{}).Where("id = ?", id).Update("total", total)
 
@@ -56,5 +47,5 @@ func UpdateTotal(total float32, id int) float32 {
 		log.Error("Order no encontrada")
 	}
 
-	return total
+	return
 }

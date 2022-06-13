@@ -50,6 +50,15 @@ func InsertOrder(c *gin.Context) {
 		return
 	}
 
+	var id int
+	var ok bool
+	id, ok = service.OrderService.CheckStock(orderDto)
+
+	if ok == false {
+		c.JSON(http.StatusBadRequest, id)
+		return
+	}
+
 	orderDto, er := service.OrderService.InsertOrder(orderDto)
 
 	// Error del Insert

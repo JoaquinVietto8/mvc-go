@@ -12,19 +12,19 @@ import (
 
 func mapUrls() {
 	// Category Mapping
-	router.GET("/home", categoryController.GetCategories)
+	router.GET("/categorias", categoryController.GetCategories)
 
 	// Products Mapping
-	router.GET("/products/:id_product", productController.GetProductById)
-	router.GET("/products", productController.GetProducts)
-	router.GET("/products/category/:name", productController.GetProductsByCategoryName)
-	router.GET("/search-products/:search", productController.GetProductsBySearch)
+	router.GET("/productos/:id_product", productController.GetProductById)
+	router.GET("/productos", productController.GetProducts)
+	router.GET("/categorias/:name", productController.GetProductsByCategoryName)
+	router.GET("/search-producto/:search", productController.GetProductsBySearch)
 
 	// Details Mapping
 	router.GET("/detail/:id_order", detailController.GetDetailsByOrderId)
 
 	// Orders Mapping
-	router.GET("/order/:id_user", orderController.GetOrdersByUserId)
+	router.GET("/orders/:id_user", orderController.GetOrdersByUserId)
 	router.GET("/order", orderController.GetOrders)
 	router.POST("/new-order", orderController.InsertOrder)
 
